@@ -16,12 +16,10 @@ class EndScene extends Phaser.Scene {
     const percentage = Math.round(score).toString() + "%";
 
     if(score >= 70) {
-      // Add the happy sprite and animation below:
 			
 			
 			
     } else {
-      // Add the sad sprite and animation below:
 			
       
     }
@@ -33,13 +31,11 @@ class EndScene extends Phaser.Scene {
     this.add.text(100, 520, 'Click to play again?', { fill: '#4D39E0', fontSize: '20px' })
     
     this.input.on('pointerup', () => {
-      // Resets some gameState values needed to replay the game:
       gameState.numCoordinates = {}
       gameState.counter = 1
       gameState.correct = 0
       gameState.incorrect = 0
 
-      // Add logic to transition from EndScene 
       
 			
     })
