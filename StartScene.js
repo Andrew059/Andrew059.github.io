@@ -11,7 +11,7 @@ class StartScene extends Phaser.Scene {
   }
 
   create() {
-    let soundSample4 = this.sound.add('yoda');
+    let soundSample4 = this.sound.add('yoda').setVolume(2);
     soundSample4.play();
     this.add.image(200,300 , 'background');
     this.add.text(60,40, "Boba's Epic Adventure" , { fill: '#A9A9A9', fontSize: '50px', fontFamily: 'Odibee Sans'});
