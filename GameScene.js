@@ -4,7 +4,7 @@ class GameScene extends Phaser.Scene {
   }
   
   preload() {
-    this.load.audio('jetpack', 'jetpack.mp3'); 
+   
     this.load.image('boba', 'copy_321958841.png');
     this.load.image('stormtrooper', 'stormtrooper.png');
     this.load.image('scouttrooper', 'scouttrooper.png');
@@ -164,14 +164,13 @@ class GameScene extends Phaser.Scene {
 }
 
 update() {
-    let soundSample = this.sound.add('jetpack');
     if (gameState.cursors.left.isDown) {
 			gameState.player.setVelocityX(-300);
 		} else if (gameState.cursors.right.isDown) {
 			gameState.player.setVelocityX(300);
 		} else if (gameState.cursors.up.isDown){
       gameState.player.setVelocityY(-300);
-      soundSample.play();
+     
     } else {
 			gameState.player.setVelocityX(0);
 		}
