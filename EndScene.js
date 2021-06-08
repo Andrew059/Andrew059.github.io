@@ -11,7 +11,7 @@ class EndScene extends Phaser.Scene {
 
 
   create() {
-    let soundSample3 = this.sound.add('nooo');
+    let soundSample3 = this.sound.add('nooo').setVolume(0.4);
       soundSample3.play();
     this.add.image(210, 280,'bobaend').setScale(1.2);
     this.add.text(140, 140, 'Game Over', { fontSize: '50px', fill: '#000000', fontFamily: 'Odibee Sans' });
