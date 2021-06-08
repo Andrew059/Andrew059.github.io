@@ -200,7 +200,7 @@ class GameScene extends Phaser.Scene {
 
 
    const setLaserLoop = this.time.addEvent({
-    delay: 1000,
+    delay: 2000,
     callback: setShoot,
     callbackScope: this,
     loop: true,
