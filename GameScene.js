@@ -7,7 +7,6 @@ class GameScene extends Phaser.Scene {
    
     this.load.image('boba', 'copy_321958841.png');
     this.load.image('stormtrooper', 'stormtrooper.png');
-    this.load.image('scouttrooper', 'scouttrooper.png');
     this.load.image('platforms', 'terrain.png');
     this.load.image('platforms2', 'terrain2.png');
     this.load.image('fireball', 'fireball.png');
