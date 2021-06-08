@@ -3,16 +3,15 @@
     src: url('https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap');
 }
 
-h1 {
- font-size: 50px;
- font-weight: normal;  
- font-family: "Verdana", sans-serif;
- color: grey;
-}
-
 body {
   background-color: black;
   text-align: center;
   font-family: "Verdana", sans-serif;
   color: white;
+}
+
+h1 {
+ font-size: 50px;
+ font-weight: normal;  
+
 }
