@@ -295,7 +295,7 @@ update() {
 		} else if (gameState.cursors.up.isDown){
       gameState.player.setVelocityY(-300);
     } else {
-			gameState.player.setVelocityX(0);
+			gameState.player.setVelocityY(300);
 		}
   } 
 }
