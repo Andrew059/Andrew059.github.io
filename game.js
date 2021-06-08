@@ -1,9 +1,7 @@
 
 const gameState = {
-  counter: 1,
-  correct: 0,
-  incorrect: 0,
-  numCoordinates: {},
+  
+  score: 0
 };
 
 const config = {
