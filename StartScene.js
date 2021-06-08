@@ -9,7 +9,7 @@ class StartScene extends Phaser.Scene {
   }
 
   create() {
-    // Creates the text on the start screen:
+ 
     this.add.image(200,300 , 'background');
     this.add.text(60,40, "Boba's Epic Adventure" , { fill: '#A9A9A9', fontSize: '50px', fontFamily: 'Odibee Sans'});
     this.add.text(90, 510, 'Ready for a Thrilling Experience?\n               Click to start!', { fill: '#A9A9A9', fontSize: ' 30px',  fontFamily: 'Odibee Sans'});
