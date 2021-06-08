@@ -288,6 +288,7 @@ class GameScene extends Phaser.Scene {
 }
 
 update() {
+	/*
     if (gameState.cursors.left.isDown) {
 			gameState.player.setVelocityX(-300);
 		} else if (gameState.cursors.right.isDown) {
@@ -300,4 +301,23 @@ update() {
 			gameState.player.setVelocityY(0);
 		}
   } 
+  */
+	let keyA;
+let keyS;
+let keyD;
+let keyW;
+	keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+	
+	if(keyA.isDown) {
+gameState.player.setVelocityX(-300);
+} else if(keyS.isDown) {
+    gameState.player.setVelocityY(300);
+} else if(keyD.isDown) {
+  gameState.player.setVelocityX(300);
+} else if(keyW.isDown) {
+   gameState.player.setVelocityY(-300);
+}
 }
