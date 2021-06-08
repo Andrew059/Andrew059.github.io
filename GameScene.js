@@ -4,9 +4,11 @@ class GameScene extends Phaser.Scene {
   }
   
   preload() {
-   
+    this.load.audio('laser', 'laser.mp3'); 
+    this.load.audio('death', 'death.mp3'); 
     this.load.image('boba', 'copy_321958841.png');
     this.load.image('stormtrooper', 'stormtrooper.png');
+    this.load.image('scouttrooper', 'scouttrooper.png');
     this.load.image('platforms', 'terrain.png');
     this.load.image('platforms2', 'terrain2.png');
     this.load.image('fireball', 'fireball.png');
@@ -62,6 +64,8 @@ class GameScene extends Phaser.Scene {
    setPlatformsLoop.destroy();
 	 this.scene.stop('GameScene');
 	 this.scene.start('EndScene');
+   let soundSample3 = this.sound.add('death');
+   soundSample3.play();
   });
    
      gameState.player.setCollideWorldBounds(true);
@@ -89,6 +93,8 @@ class GameScene extends Phaser.Scene {
      const laser = this.physics.add.sprite(gameState.enemy.x - 40, gameState.enemy.y, 'laser').setScale(.5);
      laser.body.allowGravity = false;
      laser.body.immovable = true;
+
+
     
     const destx = gameState.player.x;
     const desty = gameState.player.y;
@@ -102,9 +108,20 @@ class GameScene extends Phaser.Scene {
     const percent = speed / totalDistance;
     laser.body.velocity.x = percent * dx;
     laser.body.velocity.y = percent * dy;
+    
+    this.physics.add.collider(gameState.player, laser, () => {
+    setLaserLoop.destroy();
+	  this.scene.stop('GameScene');
+	  this.scene.start('EndScene');
+    let soundSample3 = this.sound.add('death');
+   soundSample3.play();
+  });
+   
+    let soundSample = this.sound.add('laser');
+    soundSample.play();
 
    }
-
+   
   
     
 
@@ -114,10 +131,11 @@ class GameScene extends Phaser.Scene {
     callback: setShoot,
     callbackScope: this,
     loop: true,
+  
  });
          gameState.scoreText = this.add.text(200, 10, 'Score: 0', { fontSize: '15px', fill: '#808080' });
 
-
+  
  function setPlatforms () {
 
     const yCoord = Math.random() * 580 - 130;
@@ -130,6 +148,8 @@ class GameScene extends Phaser.Scene {
    setPlatformsLoop.destroy();
 	 this.scene.stop('GameScene');
 	 this.scene.start('EndScene');
+   let soundSample3 = this.sound.add('death');
+   soundSample3.play();
   });
   this.physics.add.collider(fireball, platforms2, () => {
    platforms2.destroy();
@@ -138,10 +158,7 @@ class GameScene extends Phaser.Scene {
     gameState.scoreText.setText(`Score: ${gameState.score}`);
   });
 }
- //function setStormtrooper () {
-    //const yCoord = Math.random() * 580;
-    //platforms2.create(420, 550, 'stormtrooper');
- //}
+
 
   const setPlatformsLoop = this.time.addEvent({
     delay: 500,
@@ -149,6 +166,8 @@ class GameScene extends Phaser.Scene {
     callbackScope: this,
     loop: true,
  });
+
+ 
   
   
 
@@ -158,7 +177,10 @@ class GameScene extends Phaser.Scene {
    setPlatformsLoop.destroy();
 	 this.scene.stop('GameScene');
 	 this.scene.start('EndScene');
+   let soundSample3 = this.sound.add('death');
+   soundSample3.play();
   });
+
 
 }
 
@@ -169,7 +191,6 @@ update() {
 			gameState.player.setVelocityX(300);
 		} else if (gameState.cursors.up.isDown){
       gameState.player.setVelocityY(-300);
-     
     } else {
 			gameState.player.setVelocityX(0);
 		}
