@@ -95,6 +95,72 @@ class GameScene extends Phaser.Scene {
      laser.body.immovable = true;
 
 
+    //to continue shooting
+    //laser.body.velocity.x = 400;
+    //laser.body.velocity.y = -200;
+    /*
+    if (gameState.player.y + 30 >= gameState.enemy.y &&  gameState.player.y - 30 <= gameState.enemy.y) {
+     if (gameState.player.x >= gameState.enemy.x) {
+     laser.body.velocity.x = 300;
+     laser.body.velocity.y = 0;
+     } else if (gameState.player.x <= gameState.enemy.x) {
+     laser.body.velocity.x = -300;
+     laser.body.velocity.y = 0;
+      }
+    } else if (gameState.player.x + 120 >= gameState.enemy.x &&  gameState.player.x - 120 <= gameState.enemy.x) {
+     laser.body.velocity.x = 0;
+     laser.body.velocity.y = -400;
+    } else if (gameState.player.y + 70 >= gameState.enemy.y &&  gameState.player.y + 30 <= gameState.enemy.y) {
+      if (gameState.player.x <= gameState.enemy.x) {
+     laser.body.velocity.x = -400;
+     laser.body.velocity.y = -200;
+     } else if (gameState.player.x >= gameState.enemy.x) {
+     laser.body.velocity.x = 400;
+     laser.body.velocity.y = -200;
+      }
+    } else if (gameState.player.y + 140 >= gameState.enemy.y &&  gameState.player.y + 70 <= gameState.enemy.y) {
+      if (gameState.player.x <= gameState.enemy.x) {
+     laser.body.velocity.x = -400;
+     laser.body.velocity.y = -400;
+     } else if (gameState.player.x >= gameState.enemy.x) {
+     laser.body.velocity.x = 400;
+     laser.body.velocity.y = -400;
+      }
+    } else if (gameState.player.y + 400 >= gameState.enemy.y &&  gameState.player.y + 140 <= gameState.enemy.y) {
+      if (gameState.player.x <= gameState.enemy.x) {
+     laser.body.velocity.x = -200;
+     laser.body.velocity.y = -400;
+     } else if (gameState.player.x >= gameState.enemy.x) {
+     laser.body.velocity.x = 200;
+     laser.body.velocity.y = -400;
+    }  //error here
+    } else if (gameState.player.y + 450 >= gameState.enemy.y &&  gameState.player.y + 400 <= gameState.enemy.y) {
+      if (gameState.player.x <= gameState.enemy.x) {
+     laser.body.velocity.x = -50;
+     laser.body.velocity.y = -400;
+     } else if (gameState.player.x >= gameState.enemy.x) {
+     laser.body.velocity.x = 50;
+     laser.body.velocity.y = -400;
+    }
+      
+    } else if (gameState.player.y + 600 >= gameState.enemy.y &&  gameState.player.y + 450 <= gameState.enemy.y) {
+      if (gameState.player.x <= gameState.enemy.x) {
+     laser.body.velocity.x = -95;
+     laser.body.velocity.y = -400;
+     } else if (gameState.player.x >= gameState.enemy.x) {
+     laser.body.velocity.x = 95;
+     laser.body.velocity.y = -400;
+    } } else {
+      if (gameState.player.x <= gameState.enemy.x) {
+       const random = Math.ceil(Math.random() * 600) + 10;
+       laser.body.velocity.x = -random;
+       laser.body.velocity.y = -random;
+     } else if (gameState.player.x >= gameState.enemy.x) {
+         const random = Math.ceil(Math.random() * 600) + 10;
+         laser.body.velocity.x = random;
+         laser.body.velocity.y = -random;
+    }
+    } */
     
     const destx = gameState.player.x;
     const desty = gameState.player.y;
@@ -121,7 +187,14 @@ class GameScene extends Phaser.Scene {
     soundSample.play();
 
    }
-   
+    //else if (gameState.player.x <= 150 && gameState.player.y <= 250 && gameState.enemy.x <= 250) {
+   // laser.body.velocity.x = -500;
+   // laser.body.velocity.y = -1000;
+   // } else if (gameState.player.x <= 300 && gameState.player.y <= 250) {
+   // laser.body.velocity.x = -500;
+   // laser.body.velocity.y = -500;
+   // }
+   //to take out
   
     
 
@@ -135,7 +208,9 @@ class GameScene extends Phaser.Scene {
  });
          gameState.scoreText = this.add.text(200, 10, 'Score: 0', { fontSize: '15px', fill: '#808080' });
 
-  
+    //const platforms2 = this.physics.add.sprite(300, 100, 'platforms2');
+  //const platforms2 = this.physics.add.staticGroup();
+    //const platforms2 = this.physics.add.sprite(300, 100, 'platforms2');
  function setPlatforms () {
 
     const yCoord = Math.random() * 580 - 130;
@@ -143,7 +218,10 @@ class GameScene extends Phaser.Scene {
     platforms2.body.allowGravity = false;
     platforms2.body.immovable = true;
     platforms2.body.velocity.x = -100;
-   
+    //platforms2.create(440, yCoord, 'platforms2');
+    //this.physics.add.sprite(300, 100, 'platforms2');
+    //platforms2.setCollideWorldBounds(true);
+    //reset
   this.physics.add.collider(gameState.player, platforms2, () => {
    setPlatformsLoop.destroy();
 	 this.scene.stop('GameScene');
@@ -158,7 +236,10 @@ class GameScene extends Phaser.Scene {
     gameState.scoreText.setText(`Score: ${gameState.score}`);
   });
 }
-
+ //function setStormtrooper () {
+    //const yCoord = Math.random() * 580;
+    //platforms2.create(420, 550, 'stormtrooper');
+ //}
 
   const setPlatformsLoop = this.time.addEvent({
     delay: 500,
@@ -167,7 +248,25 @@ class GameScene extends Phaser.Scene {
     loop: true,
  });
 
- 
+ //const setStormtrooperLoop = this.time.addEvent({
+    //delay: 900,
+    //callback: setStormtrooper,
+    //callbackScope: this,
+   // loop: true,
+ //});
+
+//scoring method
+//this.physics.add.collider(platforms2, fireball, function (platforms2) {
+    //platforms2.destroy();
+    //gameState.score += 10;
+    //gameState.scoreText.setText(`Score: ${gameState.score}`);
+//});
+
+ // this.physics.add.collider(stormtrooper, fireball, function (stormtrooper) {
+  //  stormtrooper.destroy();
+    //gameState.score += 10;
+    //gameState.scoreText.setText(`Score: ${gameState.score}`);
+ // });
   
   
 
@@ -181,7 +280,11 @@ class GameScene extends Phaser.Scene {
    soundSample3.play();
   });
 
-
+  //this.physics.add.collider(gameState.player, stormtrooper, () => {
+  //setStormtrooper.destroy();
+	// this.scene.stop('GameScene');
+	// this.scene.start('EndScene');
+  //});
 }
 
 update() {
