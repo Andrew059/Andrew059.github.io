@@ -4,43 +4,24 @@ class EndScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.spritesheet('happy', 'https://content.codecademy.com/courses/learn-phaser/Counting/codey_happy.png', { frameWidth: 300, frameHeight: 300 });
-    this.load.spritesheet('sad', 'https://content.codecademy.com/courses/learn-phaser/Counting/codey_sad.png', { frameWidth: 300, frameHeight: 300 });
+    this.load.image('bobaend', 'bobaend.png');
   }
 
 
   create() {
-    // Calculates a score out of 100 points 
-    const score = gameState.correct / (gameState.correct + gameState.incorrect) * 100;
-    // Converts score to a string and adds the percentage symbol
-    const percentage = Math.round(score).toString() + "%";
-
-    if(score >= 70) {
-			
-			
-			
-    } else {
-			
-      
-    }
-
-    this.add.rectangle(225, 488, 450, 235, 0xFFFFFF, 0.2)
-
-    this.add.text(30, 450, `You counted ${percentage} correctly\n      `, { fill: '#4D39E0', fontSize: '25px' })
-
-    this.add.text(100, 520, 'Click to play again?', { fill: '#4D39E0', fontSize: '20px' })
+    this.add.image(210, 280,'bobaend').setScale(1.2);
+    this.add.text(150, 250, 'Game Over', { fontSize: '20px', fill: '#000000' });
+    this.add.text(112, 270, 'Click to Restart', { fontSize: '20px', fill: '#000000' });
     
-    this.input.on('pointerup', () => {
-      gameState.numCoordinates = {}
-      gameState.counter = 1
-      gameState.correct = 0
-      gameState.incorrect = 0
-
-      
-			
-    })
+		
+    this.input.on('pointerup', () =>{
+      gameState.score = 0;
+    	this.scene.stop('EndScene');
+	    this.scene.start('StartScene');
+    });
+    }
   }
-}
+
 
 
 
