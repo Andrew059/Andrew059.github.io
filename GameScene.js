@@ -117,7 +117,7 @@ class GameScene extends Phaser.Scene {
     }
 	  
     const setLaserLoop = this.time.addEvent({
-      delay: 2000 - gameState.score * 2,
+      delay: 2000 - gameState.score * 100,
       callback: setShoot,
       callbackScope: this,
       loop: true,
@@ -150,7 +150,7 @@ class GameScene extends Phaser.Scene {
     }
  
     const setPlatformsLoop = this.time.addEvent({
-      delay: 1400 - gameState.score * 2,
+      delay: 1400 - gameState.score * 100,
       callback: setPlatforms,
       callbackScope: this,
       loop: true,
