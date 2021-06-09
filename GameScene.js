@@ -10,8 +10,8 @@ class GameScene extends Phaser.Scene {
     this.load.image('boba', 'copy_321958841.png');
     this.load.image('stormtrooper', 'stormtrooper.png');
     this.load.image('scouttrooper', 'scouttrooper.png');
-    this.load.image('platforms', 'terrain.png');
-    this.load.image('platforms2', 'terrain2.png');
+    this.load.image('bottomPlatforms', 'terrain.png');
+    this.load.image('floatingPlatforms', 'terrain2.png');
     this.load.image('fireball', 'fireball.png');
     this.load.image('laser', 'laser.png');
     this.load.image('deathstar', 'deathstar.png');
@@ -24,17 +24,17 @@ class GameScene extends Phaser.Scene {
 	  
     const bottomPlatforms = this.physics.add.staticGroup();
 	  
-    bottomPlatforms.create(420, 590, 'platforms').setScale(2, .6).refreshBody();
-    bottomPlatforms.create(380, 590, 'platforms').setScale(2, .6).refreshBody();
-    bottomPlatforms.create(360, 590, 'platforms').setScale(2, .6).refreshBody();
-    bottomPlatforms.create( 300, 590, 'platforms').setScale(2, .6).refreshBody();
-    bottomPlatforms.create(260, 590, 'platforms').setScale(2, .6).refreshBody();
-    bottomPlatforms.create(240, 590, 'platforms').setScale(2, .6).refreshBody();
-    bottomPlatforms.create(180, 590, 'platforms').setScale(2, .6).refreshBody();
-    bottomPlatforms.create(140, 590, 'platforms').setScale(2, .6).refreshBody();
-    bottomPlatforms.create(120, 590, 'platforms').setScale(2, .6).refreshBody();
-    bottomPlatforms.create(60, 590, 'platforms').setScale(2, .6).refreshBody();
-    bottomPlatforms.create(20, 590, 'platforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create(420, 590, 'bottomPlatforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create(380, 590, 'bottomPlatforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create(360, 590, 'bottomPlatforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create( 300, 590, 'bottomPlatforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create(260, 590, 'bottomPlatforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create(240, 590, 'bottomPlatforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create(180, 590, 'bottomPlatforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create(140, 590, 'bottomPlatforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create(120, 590, 'bottomPlatforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create(60, 590, 'bottomPlatforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create(20, 590, 'bottomPlatforms').setScale(2, .6).refreshBody();
 
     const fireball = this.physics.add.staticGroup();
 
