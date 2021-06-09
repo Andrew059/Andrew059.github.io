@@ -241,9 +241,9 @@ class GameScene extends Phaser.Scene {
     //const yCoord = Math.random() * 580;
     //platforms2.create(420, 550, 'stormtrooper');
  //}
-
+   
   const setPlatformsLoop = this.time.addEvent({
-    delay: 1500,
+    delay: 1700 -= 100,
     callback: setPlatforms,
     callbackScope: this,
     loop: true,
