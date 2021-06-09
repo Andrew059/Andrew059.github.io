@@ -22,19 +22,19 @@ class GameScene extends Phaser.Scene {
 	  
     gameState.player = this.physics.add.sprite(80, 500, 'boba').setScale(.5);
 	  
-    const platforms = this.physics.add.staticGroup();
+    const bottomPlatforms = this.physics.add.staticGroup();
 	  
-    platforms.create(420, 590, 'platforms').setScale(2, .6).refreshBody();
-    platforms.create(380, 590, 'platforms').setScale(2, .6).refreshBody();
-    platforms.create(360, 590, 'platforms').setScale(2, .6).refreshBody();
-    platforms.create( 300, 590, 'platforms').setScale(2, .6).refreshBody();
-    platforms.create(260, 590, 'platforms').setScale(2, .6).refreshBody();
-    platforms.create(240, 590, 'platforms').setScale(2, .6).refreshBody();
-    platforms.create(180, 590, 'platforms').setScale(2, .6).refreshBody();
-    platforms.create(140, 590, 'platforms').setScale(2, .6).refreshBody();
-    platforms.create(120, 590, 'platforms').setScale(2, .6).refreshBody();
-    platforms.create(60, 590, 'platforms').setScale(2, .6).refreshBody();
-    platforms.create(20, 590, 'platforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create(420, 590, 'platforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create(380, 590, 'platforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create(360, 590, 'platforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create( 300, 590, 'platforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create(260, 590, 'platforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create(240, 590, 'platforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create(180, 590, 'platforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create(140, 590, 'platforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create(120, 590, 'platforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create(60, 590, 'platforms').setScale(2, .6).refreshBody();
+    bottomPlatforms.create(20, 590, 'platforms').setScale(2, .6).refreshBody();
 
     const fireball = this.physics.add.staticGroup();
 
@@ -59,16 +59,16 @@ class GameScene extends Phaser.Scene {
     fireball.create(10, 550, 'fireball').setScale(0.1, .1).refreshBody();
 	  
     this.physics.add.collider(gameState.player, fireball, () => {
-        setPlatformsLoop.destroy();
+        setFloatingPlatformsLoop.destroy();
         this.scene.stop('GameScene');
         this.scene.start('EndScene');
-        let soundSample3 = this.sound.add('death');
-        soundSample3.play();
+        let soundSample1 = this.sound.add('death');
+        soundSample1.play();
     });
    
     gameState.player.setCollideWorldBounds(true);
 
-    this.physics.add.collider(gameState.player, platforms);
+    this.physics.add.collider(gameState.player, bottomPlatforms);
 
     gameState.cursors = this.input.keyboard.createCursorKeys();
 
@@ -76,7 +76,7 @@ class GameScene extends Phaser.Scene {
 
     gameState.enemy.setCollideWorldBounds(true);
 	  
-    this.physics.add.collider(gameState.enemy, platforms);
+    this.physics.add.collider(gameState.enemy, bottomPlatforms);
 
     gameState.enemy.move = this.tweens.add({
       targets: gameState.enemy,
@@ -108,12 +108,12 @@ class GameScene extends Phaser.Scene {
         setLaserLoop.destroy();
 	this.scene.stop('GameScene');
 	this.scene.start('EndScene');
-        let soundSample3 = this.sound.add('death');
-        soundSample3.play();
+        let soundSample2 = this.sound.add('death');
+        soundSample2.play();
       });
    
-      let soundSample = this.sound.add('laser');
-      soundSample.play();
+      let soundSample3 = this.sound.add('laser');
+      soundSample3.play();
     }
 	  
     const setLaserLoop = this.time.addEvent({
@@ -125,31 +125,31 @@ class GameScene extends Phaser.Scene {
 	  
     gameState.scoreText = this.add.text(200, 10, 'Score: 0', { fontSize: '15px', fill: '#808080' });
 
-    function setPlatforms () {
+    function setFloatingPlatforms () {
       const yCoord = Math.random() * 580 - 130;
-      const platforms2 = this.physics.add.sprite(500, yCoord, 'platforms2');
-      platforms2.body.allowGravity = false;
-      platforms2.body.immovable = true;
-      platforms2.body.velocity.x = -100;
+      const floatingPlatforms = this.physics.add.sprite(500, yCoord, 'floatingPlatforms');
+      floatingPlatforms.body.allowGravity = false;
+      floatingPlatforms.body.immovable = true;
+      floatingPlatforms.body.velocity.x = -100;
 	    
-      this.physics.add.collider(gameState.player, platforms2, () => {
-        setPlatformsLoop.destroy();
+      this.physics.add.collider(gameState.player, floatingPlatforms, () => {
+        setFloatingPlatformsLoop.destroy();
         this.scene.stop('GameScene');
         this.scene.start('EndScene');
-        let soundSample3 = this.sound.add('death');
-        soundSample3.play();
+        let soundSample4 = this.sound.add('death');
+        soundSample4.play();
       });
 	    
-      this.physics.add.collider(fireball, platforms2, () => {
-        platforms2.destroy();
+      this.physics.add.collider(fireball, floatingPlatforms, () => {
+        floatingPlatforms.destroy();
         gameState.score += 10;
         gameState.scoreText.setText(`Score: ${gameState.score}`);
-	let soundSample7 = this.sound.add('score').setVolume(0.5);
-        soundSample7.play();
+	let soundSample5 = this.sound.add('score').setVolume(0.5);
+        soundSample5.play();
       });
     }
  
-    const setPlatformsLoop = this.time.addEvent({
+    const setFloatingPlatformsLoop = this.time.addEvent({
       delay: 1400,
       callback: setPlatforms,
       callbackScope: this,
@@ -157,11 +157,11 @@ class GameScene extends Phaser.Scene {
     });
 	  
     this.physics.add.collider(gameState.player, gameState.enemy, () => {
-      setPlatformsLoop.destroy();
+      setFloatingPlatformsLoop.destroy();
       this.scene.stop('GameScene');
       this.scene.start('EndScene');
-      let soundSample3 = this.sound.add('death');
-      soundSample3.play();
+      let soundSample6 = this.sound.add('death');
+      soundSample6.play();
     });
   }
 
