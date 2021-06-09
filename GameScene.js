@@ -243,7 +243,7 @@ class GameScene extends Phaser.Scene {
  //}
 
   const setPlatformsLoop = this.time.addEvent({
-    delay: 900,
+    delay: 1500,
     callback: setPlatforms,
     callbackScope: this,
     loop: true,
