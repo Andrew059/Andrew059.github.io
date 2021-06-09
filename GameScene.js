@@ -105,7 +105,7 @@ class GameScene extends Phaser.Scene {
       laser.body.velocity.y = percent * dy;
     
       this.physics.add.collider(gameState.player, laser, () => {
-        setLaserLoop.destroy();
+        setShootLoop.destroy();
 	this.scene.stop('GameScene');
 	this.scene.start('EndScene');
         let soundSample2 = this.sound.add('death');
@@ -116,7 +116,7 @@ class GameScene extends Phaser.Scene {
       soundSample3.play();
     }
 	  
-    const setLaserLoop = this.time.addEvent({
+    const setShootLoop = this.time.addEvent({
       delay: 2000,
       callback: setShoot,
       callbackScope: this,
@@ -151,7 +151,7 @@ class GameScene extends Phaser.Scene {
  
     const setFloatingPlatformsLoop = this.time.addEvent({
       delay: 1400,
-      callback: setPlatforms,
+      callback: setFloatingPlatforms,
       callbackScope: this,
       loop: true,
     });
