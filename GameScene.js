@@ -296,9 +296,9 @@ update() {
 			gameState.player.setVelocityX(400);
 		} else if (gameState.cursors.up.isDown){
 			         soundSample6.play();
-      gameState.player.setVelocityY(-400);
+      gameState.player.setVelocityY(-200);
     } else if  (gameState.cursors.down.isDown){
-    gameState.player.setVelocityY(400);
+    gameState.player.setVelocityY(200);
     } else {
 			gameState.player.setVelocityX(0);
 		}
