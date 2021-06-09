@@ -144,7 +144,7 @@ class GameScene extends Phaser.Scene {
         platforms2.destroy();
         gameState.score += 10;
         gameState.scoreText.setText(`Score: ${gameState.score}`);
-	let soundSample7 = this.sound.add('score');
+	let soundSample7 = this.sound.add('score').setVolume(0.5);
         soundSample7.play();
       });
     }
