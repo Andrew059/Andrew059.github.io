@@ -99,8 +99,8 @@ class GameScene extends Phaser.Scene {
 
       const dx = destx - startx;
       const dy = desty - starty;
-      const totalDistance = Math.sqrt(dx * dx + dy + dy);
-      const percent = speed / totalDistance;
+      const totalDistance = Math.ceil(Math.sqrt(dx * dx + dy + dy));
+      const percent = Math.ceil(speed / totalDistance);
       laser.body.velocity.x = percent * dx;
       laser.body.velocity.y = percent * dy;
     
@@ -111,7 +111,7 @@ class GameScene extends Phaser.Scene {
         let soundSample2 = this.sound.add('death');
         soundSample2.play();
       });
-   
+	    
       let soundSample3 = this.sound.add('laser');
       soundSample3.play();
     }
