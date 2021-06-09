@@ -22,9 +22,8 @@ class StartScene extends Phaser.Scene {
     this.input.on('pointerup', () => {
       let soundSample2 = this.sound.add('bobastart');
       soundSample2.play();
-			this.scene.stop('StartScene')
-			this.scene.start('GameScene')
-			
+      this.scene.stop('StartScene');
+      this.scene.start('GameScene');
     });
 
 
