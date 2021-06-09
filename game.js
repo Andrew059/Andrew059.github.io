@@ -1,7 +1,4 @@
-
-
 const gameState = {
-  
   score: 0
 };
 
@@ -11,11 +8,11 @@ const config = {
   height: 600,
   backgroundColor: '000000',
   physics: {
-		default: 'arcade',
-		arcade: {
-			gravity: { y: 200 },
-			enableBody: true,
-		}
+    default: 'arcade',
+    arcade: {
+      gravity: { y: 200 },
+      enableBody: true,
+    }
   },
   scene: [StartScene, GameScene, EndScene]
 };
