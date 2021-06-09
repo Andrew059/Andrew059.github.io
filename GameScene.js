@@ -291,9 +291,9 @@ class GameScene extends Phaser.Scene {
 update() {
 	let soundSample6 = this.sound.add('jetpack').setVolume(0.1);
     if (gameState.cursors.left.isDown) {
-			gameState.player.setVelocityX(-400);
+			gameState.player.setVelocityX(-300);
 		} else if (gameState.cursors.right.isDown) {
-			gameState.player.setVelocityX(400);
+			gameState.player.setVelocityX(300);
 		} else if (gameState.cursors.up.isDown){
 			         soundSample6.play();
       gameState.player.setVelocityY(-200);
