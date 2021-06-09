@@ -4,7 +4,6 @@ class GameScene extends Phaser.Scene {
   }
   
   preload() {
-    this.load.audio('jetpack', 'jetpack2.mp3'); 
     this.load.audio('laser', 'laser.mp3'); 
     this.load.audio('death', 'death.mp3'); 
     this.load.image('boba', 'copy_321958841.png');
@@ -289,13 +288,11 @@ class GameScene extends Phaser.Scene {
 }
 
 update() {
-	let soundSample6 = this.sound.add('jetpack').setVolume(0.1);
     if (gameState.cursors.left.isDown) {
 			gameState.player.setVelocityX(-300);
 		} else if (gameState.cursors.right.isDown) {
 			gameState.player.setVelocityX(300);
 		} else if (gameState.cursors.up.isDown){
-			         soundSample6.play();
       gameState.player.setVelocityY(-200);
     } else if  (gameState.cursors.down.isDown){
     gameState.player.setVelocityY(200);
